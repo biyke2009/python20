@@ -42,8 +42,6 @@ model = CheckImage()
 model.load_state_dict(torch.load("model_MNIST.pth", map_location=device))
 model.to(device)
 model.eval()
-
-
 @app.post("/predict/")
 async def check_image(file: UploadFile = File(...)):
     try:
@@ -66,3 +64,5 @@ async def check_image(file: UploadFile = File(...)):
 
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8007)
+
+
